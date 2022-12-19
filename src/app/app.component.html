@@ -24,7 +24,7 @@
             <div class="container">
               <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                  <input type="text" class="form-control input-lg" matInput name="text" placeholder="text" [(ngModel)]="text" />
+                  <input type="text" class="form-control input-lg" matInput name="text" placeholder="text" [(ngModel)]="text" style="border-radius: 12px;"/>
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                     <label>
                       <h5 style="color: black; font-size: 17px;"> COLOR</h5>
                     </label>
-                    <input class="color" id="fill" type="color" value="#333333" [(ngModel)]="fill">
+                    <input class="color" id="fill" type="color" value="#333333" [(ngModel)]="fill" style="border-radius: 10px;">
                     <label for="minversion">
                       <h5 style="color: black; font-size: 15px;">MIN VERSION: {{minVersion}}</h5>
                     </label>
@@ -55,7 +55,7 @@
                     <label for="eclevel">
                       <h5 style="color: black; font-size: 15px;">CORRECTION LEVEL</h5>
                     </label>
-                    <select id="eclevel" [(ngModel)]="ecLevel">
+                    <select id="eclevel" [(ngModel)]="ecLevel" style="border-radius: 10px;">
                       <option value="L">L - low (7%)</option>
                       <option value="M">M - medium (15%)</option>
                       <option value="Q">Q - quartile (25%)</option>
@@ -79,7 +79,7 @@
                   <img id="img-buffer" src="assets/dummy.png" #imgBuffer>
           <div>
             <label for="mode"><h5 style="color: black; font-size: 15px;">MODE</h5></label>
-            <select id="mode" [(ngModel)]="mode">
+            <select id="mode" [(ngModel)]="mode" style="border-radius: 10px;">
               <!-- <option value="plain">plain</option> -->
               <option value="label" selected="selected">label</option>
               <!-- <option value="image">image</option> -->
