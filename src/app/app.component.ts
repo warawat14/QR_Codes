@@ -14,7 +14,7 @@ export class AppComponent {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  text = "https://www.youtube.com/";
+  text = " https://www.youtube.com/";
   render: KjuaRender = "svg";
   crisp = true;
   minVersion = 1;
