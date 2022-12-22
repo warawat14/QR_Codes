@@ -1,0 +1,179 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-4 login-sec">Q
+        <h2 class="text-center">QR Code Generator</h2>
+        <div class="container">
+          <div id="custom-search-input">
+            <div class="input-group col-md-12">
+              <input type="text" class="form-control" matInput name="text" placeholder="text" [(ngModel)]="text" />
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="container">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="alert alert-success" style="background-color: #ffffff">
+          <div class="col-md-4 login-sec" style="max-width: 140%;">
+            <h1 class="text-center"><i class="bi bi-qr-code-scan"></i></h1>
+            <h2 class="text-center">QR Code Generator</h2>
+            <div class="container">
+              <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                  <input type="text" class="form-control input-lg" matInput name="text" placeholder="text"
+                    [(ngModel)]="text" style="border-radius: 12px;" />
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="col-md-6">
+              <div class="center" style="margin-left: 75%;">
+                <ngx-kjua #parent [text]="text" [render]="render" [crisp]="crisp" [minVersion]="minVersion"
+                  [ecLevel]="ecLevel" [size]="size" [ratio]="ratio" [fill]="fill" [back]="back" [rounded]="rounded"
+                  [quiet]="quiet" [mode]="mode" [mSize]="[mSize, mSize2]" [mPosX]="[mPosX,mPosX2]"
+                  [mPosY]="[mPosY,mPosY2]" [label]="label" [fontname]="fontname" [fontcolor]="fontcolor"
+                  [fontoutline]="fontoutline" [image]="image" [imageAsCode]="imageAsCode"
+                  [elementId]="elementId"></ngx-kjua>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <section class="section">
+                <div class="caption">
+                  <label class="col-md-12 settings-options">
+                    <label>
+                      <h5 style="color: black; font-size: 17px;"><i class="bi bi-brush-fill"></i> COLOR <i class="bi bi-brush-fill"></i></h5>
+                    </label>
+                    <input class="color" id="fill" type="color" value="#333333" [(ngModel)]="fill"
+                      style="border-radius: 10px;">
+                    <label for="minversion">
+                      <h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> MIN
+                        VERSION: {{minVersion}} <i class="bi bi-caret-right-square-fill"></i></h5>
+                    </label>
+                    <input style="border-radius: 10px;" id="minversion" type="range" value="1" min="1" max="10" step="1"
+                      [(ngModel)]="minVersion">
+                    <label for="eclevel">
+                      <h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-down-square-fill"></i> CORRECTION
+                        LEVEL <i class="bi bi-caret-down-square-fill"></i></h5>
+                    </label>
+                    <select id="eclevel" [(ngModel)]="ecLevel" style="border-radius: 10px;">
+                      <option value="L">L - low (7%)</option>
+                      <option value="M">M - medium (15%)</option>
+                      <option value="Q">Q - quartile (25%)</option>
+                      <option value="H" selected="selected">H - high (30%)</option>
+                    </select>
+
+                  </label>
+                </div>
+              </section>
+            </div>
+            <div class="col-md-6">
+              <section class="section">
+                <div class="caption">
+                  <img id="img-buffer" src="assets/dummy.png" #imgBuffer>
+                  <div>
+                    <label for="quiet">
+                      <h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> ZONE:
+                        {{quiet}} modules <i class="bi bi-caret-right-square-fill"></i></h5>
+                    </label>
+                    <input style="border-radius: 10px;" id="quiet" type="range" value="1" min="0" max="40" step="1"
+                      [(ngModel)]="quiet">
+                    <label for="rounded">
+                      <h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> CORNERS:
+                        {{rounded}}% <i class="bi bi-caret-right-square-fill"></i></h5>
+                    </label>
+                    <input style="border-radius: 10px;" id="rounded" type="range" value="100" min="0" max="100"
+                      step="10" [(ngModel)]="rounded">
+                    <label for="mode">
+                      <h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-down-square-fill"></i> MODE <i
+                          class="bi bi-caret-down-square-fill"></i></h5>
+                    </label>
+                    <select id="mode" [(ngModel)]="mode" style="border-radius: 10px;">
+                      <!-- <option value="plain">plain</option> -->
+                      <option value="label" selected="selected">Normal</option>
+                      <!-- <option value="image">image</option> -->
+                      <!-- <option value="imagelabel">imagelabel</option> -->
+                      <option value="labelimage">Image</option>
+                    </select>
+                    <br>
+                    <!-- <div *ngIf="mode === 'labelimage' || mode === 'imagelabel'">
+              <label for="msize2"><h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> SIZE2: {{mSize2}}% <i class="bi bi-caret-right-square-fill"></i></h5></label><input id="msize2" type="range" value="30" min="0" max="100"
+                step="1" [(ngModel)]="mSize2">
+              <label for="mposx2"><h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> POS X2: {{mPosX2}}% <i class="bi bi-caret-right-square-fill"></i></h5></label><input id="mposx2" type="range" value="50" min="0"
+                max="100" step="1" [(ngModel)]="mPosX2">
+              <label for="mposy2"><h5 style="color: black; font-size: 15px;"><i class="bi bi-caret-left-square-fill"></i> POS Y2: {{mPosY2}}% <i class="bi bi-caret-right-square-fill"></i></h5></label><input id="mposy2" type="range" value="50" min="0"
+                max="100" step="1" [(ngModel)]="mPosY2">
+            </div> -->
+                    <!-- <label for="label"><h5 style="color: black; font-size: 15px;">LABEL</h5></label><input id="label" type="text" [(ngModel)]="label">
+            <label for="font"><h5 style="color: black; font-size: 15px;">FONT NAME</h5></label><input id="font" type="text" [(ngModel)]="fontname">
+            <label for="fontcolor"><h5 style="color: black; font-size: 15px;">FONT COLOR</h5></label><input id="fontcolor" type="color" value="#ff9818"
+              [(ngModel)]="fontcolor">
+            <label for="fontoutline"><h5 style="color: black; font-size: 15px;">FONT OUTLINE</h5></label><input id="fontoutline" [(ngModel)]="fontoutline"
+              type="checkbox">
+            <hr> -->
+
+                    <!-- <label for="image"></label><input id="image" type="file" (change)="getFiles($event)"> -->
+                    <!-- <label for="image-text"><h5 style="color: black; font-size: 15px;">IMAGE-TEXT (base64)</h5></label><input id="image-text" [(ngModel)]="imageText"
+              type="text">
+            <label for="image-as-code"><h5 style="color: black; font-size: 15px;">IMAGE-AS-CODE</h5></label><input id="image-as-code" [(ngModel)]="imageAsCode"
+              type="checkbox"> -->
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="container">
+            <br>
+            <button class="btn btn-secondary btn-lg btn-block"
+              style="background: linear-gradient(to bottom, #00ca7d, #005c2e);" (click)="fileUpload.click()">Choose a
+              picture <i class="bi bi-card-image" style="color: white;"></i></button>
+            <input #uploader type="file" accept="image/png" (change)="getFiles($event)" #fileUpload hidden>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+  <body>
+    <!-- <img id="img-buffer" src="assets/dummy.png" #imgBuffer>
+      <div class="container mt-3">
+        <div class="alert alert-success right"><label for="mode">MODE</label><select id="mode" [(ngModel)]="mode">
+            <option value="plain">plain</option>
+            <option value="label" selected="selected">label</option>
+            <option value="image">image</option>
+            <option value="imagelabel">imagelabel</option>
+            <option value="labelimage">labelimage</option>
+          </select>
+          <hr>
+          <div *ngIf="mode === 'labelimage' || mode === 'imagelabel'">
+            <label for="msize2">SIZE2: {{mSize2}}%</label><input id="msize2" type="range" value="30" min="0" max="100"
+              step="1" [(ngModel)]="mSize2">
+            <label for="mposx2">POS X2: {{mPosX2}}%</label><input id="mposx2" type="range" value="50" min="0" max="100"
+              step="1" [(ngModel)]="mPosX2">
+            <label for="mposy2">POS Y2: {{mPosY2}}%</label><input id="mposy2" type="range" value="50" min="0" max="100"
+              step="1" [(ngModel)]="mPosY2">
+            <hr>
+          </div>
+          <label for="label">LABEL</label><input id="label" type="text" [(ngModel)]="label">
+          <label for="font">FONT NAME</label><input id="font" type="text" [(ngModel)]="fontname">
+          <label for="fontcolor">FONT COLOR</label><input id="fontcolor" type="color" value="#ff9818"
+            [(ngModel)]="fontcolor">
+          <label for="fontoutline">FONT OUTLINE</label><input id="fontoutline" [(ngModel)]="fontoutline"
+            type="checkbox">
+          <hr>
+            <label for="image"></label><input id="image" type="file" (change)="getFiles($event)">
+          <label for="image-text">IMAGE-TEXT (base64)</label><input id="image-text" [(ngModel)]="imageText" type="text">
+          <label for="image-as-code">IMAGE-AS-CODE</label><input id="image-as-code" [(ngModel)]="imageAsCode"
+            type="checkbox">
+        </div>
+      </div> -->
+  </body>
+<!-- <router-outlet></router-outlet> -->

@@ -5,6 +5,10 @@ import { NgxKjuaModule } from 'ngx-kjua';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { QrRoutingModule } from './modeule/qr/qr-routing.module';
+import { QrModule } from './modeule/qr/qr.module';
+import { TeamRoutingModule } from './modeule/team/team-routing.module';
+import { TeamModule } from './modeule/team/team.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +17,13 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxKjuaModule,
+    // NgxKjuaModule,
     FormsModule,
+    TeamRoutingModule,
+    QrRoutingModule,
+    QrModule,
+    TeamModule
+
 
   ],
   providers: [],
